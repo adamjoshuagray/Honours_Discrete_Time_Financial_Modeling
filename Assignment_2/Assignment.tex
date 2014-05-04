@@ -1,0 +1,37 @@
+\documentclass{unswmaths}
+\usepackage{color}
+\usepackage{unswshortcuts}
+\begin{document}
+\author{Adam J. Gray}
+\studentno{3329798}
+\subject{Number Theory}
+\title{Assignment}
+
+\unswtitle
+
+\section{Question 4}
+
+\begin{align*}
+	I_n &= \sum_{j=0}^{n-1} \Delta_j (M_{j+1} - M_j) & n = 1,\ldots, N \\
+\end{align*}
+
+See that
+
+\begin{align*}
+	\E{I_{n+1} | F_n } &= \E{\sum_{j=0}^{n} \Delta_j (M_{j+1} - M_j) | \mathcal{F}_n} \\
+		&= \E{\sum_{j=0}^{n-1} \Delta_j (M_{j+1} - M_j) + \Delta_n(M_{n+1} - M_{n}) | \mathcal{F}_n} \\
+		&= \E{\sum_{j=0}^{n-1} \Delta_j (M_{j+1} - M_j) | \mathcal{F}_n} + \E{\Delta_n(M_{n+1} - M_{n}) | \mathcal{F}_n} \\
+		& \text{ by linearity of conditional expectation } \\
+		&= I_n + \Delta_n \E{M_{n+1} - \E{M_n} | \mathcal{F}} \\
+		& \text{ because } \Delta_n \text{ is adapted to } \mathcal{F}_n \\
+		&= I_n + \Delta_n (\E{M_{n+1} | \mathcal{F}} - M_n) \\
+		& \text{ because } M_n \text{ is completely determined by } \mathcal{F}_n \\
+		&= I_n + \Delta_n (M_n - M_n) \\
+		& \text{ because } M_n \text{ is a martingale } \\
+		&= I_n
+\end{align*}
+
+and so $ \{ I_n \}_{n=0}^{N} $ is a martingale.
+\end{document}
+
+
